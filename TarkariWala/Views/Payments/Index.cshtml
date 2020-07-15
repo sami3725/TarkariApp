@@ -1,0 +1,87 @@
+﻿@model IEnumerable<TarkariWala.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="container">
+    <table class="table" id="paymentstable" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order.DeliveryTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoupenCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PayedAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Code)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Order.DeliveryTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CoupenCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayedAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PaymentID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.PaymentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PaymentID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{
+
+    <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#paymentstable').DataTable({
+
+            });
+        });
+    </script>
+}

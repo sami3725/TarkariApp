@@ -1,0 +1,50 @@
+﻿@model TarkariWala.Models.Deliveryman
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Deliveryman</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliverymanName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliverymanName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CitizenshipNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CitizenshipNo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DeliverymansID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

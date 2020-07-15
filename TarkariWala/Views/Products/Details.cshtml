@@ -1,0 +1,58 @@
+﻿@model TarkariWala.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductSubCategory.ProductSubCategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductSubCategory.ProductSubCategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier.SuppliersName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier.SuppliersName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

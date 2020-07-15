@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TarkariWala.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <table class="table" id="ordertable" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Client.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Product.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryTime)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Client.ClientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryTime)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{
+
+    <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ordertable').DataTable({
+
+            });
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TarkariWala.Models.Supplier>
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<h2>SuppliersDetails</h2>
+<div>
+    
+    <hr />
+    <table class="table" id="suppliersdetailproduct" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SuppliersName)
+                </th>
+                <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var items in Model)
+            {
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = items.SuppliersID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+
+    @section scripts{
+        <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#productdetailstable').DataTable({
+
+                });
+            });
+        </script>
+    }

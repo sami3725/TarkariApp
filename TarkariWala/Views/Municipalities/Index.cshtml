@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TarkariWala.Models.Municipality>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <table class="table" id="municipalitiestable" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.District.DistrictName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MunicipalityName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.District.DistrictName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MunicipalityName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MunicipalityID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.MunicipalityID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MunicipalityID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+
+    <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#municipalitiestable').DataTable({
+
+            });
+        });
+    </script>
+}

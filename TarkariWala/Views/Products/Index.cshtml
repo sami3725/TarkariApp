@@ -1,0 +1,86 @@
+﻿@model IEnumerable<TarkariWala.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+<div class="container-fluid">
+    <table class="table" id="productstable" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductSubCategory.ProductSubCategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Supplier.SuppliersName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <img src="@item.Image" style="height:80px; width:80px;" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSubCategory.ProductSubCategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.SuppliersName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+
+    
+    <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#productstable').DataTable();
+        });
+    </script>
+}

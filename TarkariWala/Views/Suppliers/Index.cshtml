@@ -1,0 +1,92 @@
+﻿@model IEnumerable<TarkariWala.Models.Supplier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <table class="table" id="supplierstable" border="1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SuppliersName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="javascript:void(0);" class="clickmeEvent text-primary" data-id="@item.SuppliersID"> @item.SuppliersName</a>
+                        <p id="suppliersName" hidden>@item.SuppliersName</p>
+                        
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SuppliersID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SuppliersID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SuppliersID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr></tr>
+        </tfoot>
+
+    </table>
+</div>
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-tasks"></i> &nbsp;<span id="suppliersName1"></span>
+            </div>
+            <div id='myModalContent'>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<link href="~/Content/datatable jq/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Content/datatable jq/jquery.dataTables.min.js"></script>
+    <script>
+       
+        $(document).ready(function () {
+            $('#supplierstable').DataTable({
+
+            });
+
+            var TeamDetailPostBackURL = '/Suppliers/ProductDetails';
+
+            $(".clickmeEvent").click(function () {
+                alert();
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal('show');
+
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    },
+                });
+            });
+        });
+    </script>
+}
