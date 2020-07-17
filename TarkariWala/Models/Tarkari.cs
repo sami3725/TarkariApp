@@ -13,6 +13,7 @@ namespace TarkariWala.Models
         }
 
         public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Client> Clients { get; set; }

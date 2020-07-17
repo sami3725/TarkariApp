@@ -37,6 +37,9 @@ namespace TarkariWala.Models
 
         [StringLength(50)]
         public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
+        public string Image { get; set; }
 
         [StringLength(50)]
         public string DateOfBirth { get; set; }

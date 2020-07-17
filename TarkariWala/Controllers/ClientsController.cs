@@ -1,7 +1,9 @@
-﻿using System;
+﻿using PasswordSecurity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -21,6 +23,29 @@ namespace TarkariWala.Controllers
             return View(clients.ToList());
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult userview()
+        {
+            var indexs = db.Clients.ToList();
+            return View(indexs);
+        }
+        public ActionResult AdmineuserCreate(string UserName, string Password, string Role, HttpPostedFileBase Image)
+        {
+            Client c = new Client();
+            c.Email = UserName;
+            c.Password = PasswordStorage.CreateHash(Password);
+            c.Role = Role;
+            var filename = Path.GetFileName(Image.FileName);
+            var path = Path.Combine(Server.MapPath("~/imgs"), filename);
+            Image.SaveAs(path);
+            c.Image = "/imgs/" + filename;
+            db.Clients.Add(c);
+            db.SaveChanges();
+            return RedirectToAction("userview");
+        }
         // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
