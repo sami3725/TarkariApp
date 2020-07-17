@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "userview";
+}
+
+
+
+    <div class="container">
+        <h2>userview</h2>
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Suppiler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">User</a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Username</th>
+                                            <th>PhoneNumber</th>
+                                            <th>Role</th>
+
+                                            <th>#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>g</td>
+                                            <td>h</td>
+                                            <td>i</td>
+                                            <td>j</td>
+                                            <td>j</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                Same 
+                            </div>
+                           
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <input class="form-control " placeholder="Email" name="UserName"/>
+                        <input class="form-control mt-4" placeholder="Password" name="Password"/>
+                        <input class="form-control mt-4" placeholder="Role" name="Role"/>
+                        <input class="form-control mt-4" placeholder="Image" name="Image" type="file"/>
+                    </div>
+                    <div class="card-footer">
+                        <input class="btn btn-sm btn-outline-info" value="Create New" type="button" />
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
